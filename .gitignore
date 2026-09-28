@@ -1,0 +1,13 @@
+# Generated build/release output
+dist/
+releases/
+
+# Dependencies / tooling
+node_modules/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+**/Thumbs.db
+.vscode/
+.idea/

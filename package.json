@@ -1,0 +1,11 @@
+{
+  "name": "chatgpt-sync",
+  "version": "0.3.18",
+  "private": true,
+  "type": "module",
+  "description": "Cross-browser ChatGPT conversation synchronisation protection extension.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node --check src/content.js && node --check src/interceptor.js && node --check scripts/build.mjs && node --check scripts/check-helpers.mjs && node scripts/check-helpers.mjs"
+  }
+}
