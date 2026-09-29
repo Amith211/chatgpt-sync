@@ -8,6 +8,14 @@ const targets = ["chromium", "firefox"];
 const sourceFiles = ["content.js", "interceptor.js"];
 const iconSourceDir = resolve(root, "assets", "icons");
 
+const iconFiles = [
+  "icon-16.png",
+  "icon-32.png",
+  "icon-48.png",
+  "icon-96.png",
+  "icon-128.png"
+];
+
 const packageJson = JSON.parse(await readFile(resolve(root, "package.json"), "utf8"));
 const version = packageJson.version;
 
@@ -28,7 +36,15 @@ for (const target of targets) {
     await cp(resolve(root, "src", file), resolve(outputDir, file));
   }
 
-  await cp(iconSourceDir, resolve(outputDir, "icons"), { recursive: true });
+  const iconOutputDir = resolve(outputDir, "icons");
+  await mkdir(iconOutputDir, { recursive: true });
+
+  for (const iconFile of iconFiles) {
+    await cp(
+      resolve(iconSourceDir, iconFile),
+      resolve(iconOutputDir, iconFile)
+    );
+  }
 }
 
 await writeFile(resolve(root, "dist", ".version"), `${version}\n`, "utf8");
